@@ -1,0 +1,10 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - bin/*
+
+Style/Documentation:
+  Exclude:
+    - app/models/*
+    - app/controllers/*
+    - config/*

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Subscriber < ApplicationRecord
-    validates :email, format: {with:  /[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/}
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true
 end

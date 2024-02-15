@@ -6,7 +6,6 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
-
     render json: @events
   end
 
@@ -21,6 +20,20 @@ class EventsController < ApplicationController
 
     if @event.save
       render json: @event, status: :created, location: @event
+    else
+      render json: @event.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /events/1
+  def destroy
+    @event.destroy!
+  end
+
+  # PATCH/PUT /events/1
+  def update
+    if @events.update(event_params)
+      render json: @event
     else
       render json: @event.errors, status: :unprocessable_entity
     end

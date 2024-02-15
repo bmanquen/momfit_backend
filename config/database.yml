@@ -19,7 +19,7 @@ default: &default
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  username: momfit_backend
+  # username: momfit_backend
 
   # The password associated with the PostgreSQL role (username).
   password: 2nqp3kQciV6xjnhHNjCh
@@ -80,5 +80,4 @@ test:
 production:
   <<: *default
   database: momfit_backend_production
-  username: momfit_backend
-  password: <%= ENV["MOMFIT_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>

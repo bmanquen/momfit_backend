@@ -1,52 +1,54 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 # Tests for Event Model
 class EventTest < ActiveSupport::TestCase
-  test 'valid event' do
-    event = Event.new(title: 'Test', summary: 'This is a test event.')
-
-    assert event.valid?
+  setup do
+    @event = Event.new(title: "Test", summary: "This is a test event.")
   end
 
-  test 'invalid without title' do
-    event = Event.new(summary: 'This should be invalid.')
-
-    refute event.valid?
-    assert_not_nil event.errors[:title]
+  test "valid event" do
+    assert @event.valid?
   end
 
-  test 'invalid without summary' do
-    event = Event.new(title: 'Test')
+  test "invalid without title" do
+    @event.title = nil
 
-    refute event.valid?
-    assert_not_nil event.errors[:summary]
+    refute @event.valid?
+    assert @event.errors.of_kind?(:title, :blank)
   end
 
-  test 'event date must be greater than the current day' do
-    event = Event.new(title: 'Test', summary: 'Should fail', date: Date.yesterday)
+  test "invalid without summary" do
+    @event.summary = nil
 
-    refute event.valid?
-    assert_not_nil event.errors[:date]
+    refute @event.valid?
+    assert @event.errors.of_kind?(:summary, :blank)
   end
 
-  test 'event date is greater than the current day' do
-    event = Event.new(title: 'Test', summary: 'Should fail', date: Date.tomorrow)
+  test "event date must be greater than the current day" do
+    @event.date = Date.yesterday
 
-    assert event.valid?
+    refute @event.valid?
+    assert @event.errors.of_kind?(:date, :greater_than)
   end
 
-  test 'invalid when cost is negative' do
-    event = Event.new(title: 'Test', summary: 'Cost is not positive', cost: -10.00)
+  test "event date is greater than the current day" do
+    @event.date = Date.tomorrow
 
-    refute event.valid?
-    assert_not_nil event.errors[:cost]
+    assert @event.valid?
   end
 
-  test 'valid when cost is positive' do
-    event = Event.new(title: 'Test', summary: 'Cost is not positive', cost: 10.00)
+  test "invalid when cost is negative" do
+    @event.cost = -10.00
 
-    assert event.valid?
+    refute @event.valid?
+    assert @event.errors.of_kind?(:cost, :greater_than)
+  end
+
+  test "valid when cost is positive" do
+    @event.cost = 10.00
+
+    assert @event.valid?
   end
 end

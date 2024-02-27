@@ -6,12 +6,10 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
-    render json: @events
   end
 
   # GET /events/1
   def show
-    render json: @event
   end
 
   # POST /events
@@ -19,7 +17,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      render json: @event, status: :created, location: @event
+      render :show, status: :created, location: @event
     else
       render json: @event.errors, status: :unprocessable_entity
     end
@@ -32,8 +30,8 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   def update
-    if @events.update(event_params)
-      render json: @event
+    if @event.update(event_params)
+      render :show
     else
       render json: @event.errors, status: :unprocessable_entity
     end
@@ -47,6 +45,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:image, :title, :description, :date, :location, :cost, :url, :childcare,
-                                  :summary)
+      :summary)
   end
 end

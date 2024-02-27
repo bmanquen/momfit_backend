@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
-  enum :childcare, [:kid_friendly, :childcare_options]
+  enum :childcare, {
+    kid_friendly: "kid_friendly",
+    childcare_options: "childcare_options"
+  }
 
   validates :title, presence: true
   validates :summary, presence: true

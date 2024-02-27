@@ -4,17 +4,19 @@ one:
   image: MyString
   title: MyString
   description: MyText
-  date: 2024-02-01 14:25:11
+  date: <%= Date.tomorrow %>
   location: MyString
   cost: 1.5
+  summary: MyString
 
 two:
   image: MyString
   title: MyString
   description: MyText
-  date: 2024-02-01 14:25:11
+  date: <%= Date.tomorrow %>
   location: MyString
   cost: 1.5
+  summary: MyString
 
 invalid:
   title:

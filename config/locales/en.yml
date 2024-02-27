@@ -28,4 +28,8 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      event/childcare:
+        kid_friendly: "Kid Friendly Event"
+        childcare_options: "Childcare Options Available"

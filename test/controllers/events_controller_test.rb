@@ -4,9 +4,8 @@ require 'test_helper'
 
 # Tests for Events Controller
 class EventsControllerTest < ActionDispatch::IntegrationTest
-
   test 'should get index' do
-    get events_url
+    get events_url, as: :json
     assert_response :success
   end
 
@@ -19,8 +18,8 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create event' do
-    assert_difference("Event.count") do
-      post events_url, params: {event: {title: "New Event", summary: "New event summary."}}
+    assert_difference('Event.count') do
+      post events_url, params: { event: { title: 'New Event', summary: 'New event summary.' } }
     end
 
     assert_response :success

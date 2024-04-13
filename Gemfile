@@ -52,3 +52,5 @@ end
 gem 'dockerfile-rails', '>= 1.6', group: :development
 
 gem 'rubocop', '~> 1.60', require: false
+
+gem 'rack-cors'

@@ -5,17 +5,5 @@ one:
   title: MyString
   description: MyText
   date: 2024-02-01 14:25:11
-  location: MyString
+  street_address: MyString
   cost: 1.5
-
-two:
-  image: MyString
-  title: MyString
-  description: MyText
-  date: 2024-02-01 14:25:11
-  location: MyString
-  cost: 1.5
-
-invalid:
-  title:
-  summary: broken

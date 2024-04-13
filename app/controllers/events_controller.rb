@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      render json: @event, status: :created, location: @event
+      render json: @event, status: :created
     else
       render json: @event.errors, status: :unprocessable_entity
     end
@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:image, :title, :description, :date, :location, :cost, :url, :childcare,
+    params.require(:event).permit(:image, :title, :description, :date, :street_address, :city, :state, :zipcode, :cost, :url, :childcare,
                                   :summary)
   end
 end

@@ -5,8 +5,8 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.order(:created_at).all
-    render json: @events
+    ordered_events = Event.order(created_at: :desc)
+    render json: ordered_events.all
   end
 
   # GET /events/1
@@ -47,6 +47,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:id, :image, :title, :description, :start_date, :end_date, :street_address, :city, :state, :zipcode, :cost, :url, :childcare,
-                                  :summary)
+                                  :summary, :can_register)
   end
 end

@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'momfit-backend-wispy-pond-2990'
+app = 'momfit-backend'
 primary_region = 'dfw'
 console_command = '/rails/bin/rails console'
 

@@ -22,7 +22,7 @@ default: &default
   # username: momfit_backend
 
   # The password associated with the PostgreSQL role (username).
-  password: 2nqp3kQciV6xjnhHNjCh
+  password: <%= ENV.fetch("DB_PASSWORD") { nil } %>
 
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
